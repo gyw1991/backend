@@ -1,0 +1,24 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto11 # 指定JDK版本
+  pre_build:
+    commands:
+      - echo "Nothing to do in the pre-build phase..."
+  build:
+    commands:
+      - echo "Build started on $(date)"
+      - mvn install # Maven构建项目
+      - echo "Maven install completed on $(date)"
+  post_build:
+    commands:
+      - echo "Build started on $(date)"
+      - mv ./target/shop/api-0.0.1-SNAPSHOT.jar ./target/app.jar # 重命名JAR文件
+      - chmod 777 ./appstart.sh # 赋予脚本执行权限
+artifacts:
+  files:
+    - target/app.jar
+    - batch/*
+    - appstart.sh # 启动脚本
+    - appspec.yml # AWS CodeDeploy配置文件

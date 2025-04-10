@@ -2,15 +2,15 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: root
-    url: jdbc:postgresql://localhost/postgres
+    username: root
+    password: ae869021
+    url: jdbc:postgresql://prd-db.ct4ay0es0kor.ap-northeast-1.rds.amazonaws.com/postgres
     platform: postgres
     initialization-mode: always
     continue-on-error: true
   jpa:
     show-sql: false
-#    generate-ddl: false
+    #    generate-ddl: false
     hibernate:
       ddl-auto: create
     database: postgresql
@@ -21,16 +21,13 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
   #      dialect: org.hibernate.dialect.MySQL5Dialect
 
-#  jackson:
-#    default-property-inclusion: non_null
-#  redis:
-#    host: localhost
-#    port: 6379
-#  freemarker:
-#      cache: false
-
-
-
+  #  jackson:
+  #    default-property-inclusion: non_null
+  #  redis:
+  #    host: localhost
+  #    port: 6379
+  #  freemarker:
+  #      cache: false
 
   queries:
     users-query: select email, password, active from users where email=?

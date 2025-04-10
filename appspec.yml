@@ -1,0 +1,20 @@
+version: 0.2
+os: linux
+files:
+  - source: target/app.jar
+    destination: /opt
+  - source: batch
+    destination: /opt/batch
+permissions:
+  - object: /opt/batch
+    pattern: "*.sh"
+    owner: root
+    group: root
+    mode: 755
+    type:
+      - file
+file_exists_behavior: OVERWRITE
+hooks:
+  AfterInstall:
+    location: appstart.sh
+    timeout: 180
